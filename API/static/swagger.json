@@ -1,0 +1,147 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API untuk membersihkan teks dan file CSV",
+    "version": "1.0.0",
+    "title": "Cleansing API"
+  },
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "cleansing",
+      "description": "Operasi untuk membersihkan teks"
+    }
+  ],
+  "paths": {
+    "/LSTM_text": {
+      "post": {
+        "tags": [
+          "LSTM"
+        ],
+        "summary": "Model LSTM untuk sentiment analysis",
+        "description": "Mengambil teks input dan mengembalikan hasil sentimen dari teks tersebut",
+        "parameters": [
+          {
+            "name": "text",
+            "in": "formData",
+            "description": "Teks yang akan dianalisa",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Hasil Analisis Sentimen",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cleaned_text": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MLP_text": {
+      "post": {
+        "tags": [
+          "MLP"
+        ],
+        "summary": "Model MLP untuk sentiment analysis",
+        "description": "Mengambil teks input dan mengembalikan hasil sentimen dari teks tersebut",
+        "parameters": [
+          {
+            "name": "text",
+            "in": "formData",
+            "description": "Teks yang akan dianalisa",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Hasil Analisis Sentimen",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cleaned_text": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MLP_CSV": {
+      "post": {
+        "tags": [
+          "MLP"
+        ],
+        "summary": "Model MLP untuk sentimen analisis, mohon gunakan file dengan format TSV",
+        "description": "Mengambil file TSV dan mengembalikan file TSV yang sudah dibersihkan",
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "File TSV yang akan dianalisa",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "File yang sudah dibersihkan",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "file_path": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/LSTM_CSV": {
+      "post": {
+        "tags": [
+          "LSTM"
+        ],
+        "summary": "Model LSTM untuk sentimen analisis, mohon gunakan file dengan format TSV",
+        "description": "Mengambil file TSV dan mengembalikan file TSV yang sudah dibersihkan",
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "File TSV yang akan dianalisa",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "File yang sudah dibersihkan",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "file_path": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
